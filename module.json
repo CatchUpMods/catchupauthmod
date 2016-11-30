@@ -4,6 +4,6 @@
     "author": "Tedozi Manson - <a href=\"https://github.com/duyphan2502\">https://github.com/duyphan2502</a>",
     "description": "Authentication package.",
     "namespace": "WebEd\\Base\\Auth",
-    "version": "2.0",
+    "version": "2.0.5",
     "autoload": "psr-4"
 }

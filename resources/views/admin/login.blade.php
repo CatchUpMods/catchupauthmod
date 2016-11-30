@@ -21,7 +21,7 @@
     ?>
     <div class="login-box">
         <div class="login-logo">
-            <a href="/">Lara<b>WebEd</b></a>
+            <a href="/"><b>WebEd</b></a>
         </div>
         <div class="login-box-body">
             <p class="login-box-msg">Sign in to start your session</p>
