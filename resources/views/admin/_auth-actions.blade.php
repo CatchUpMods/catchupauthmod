@@ -13,13 +13,12 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="Admin dashboard - WebEd" name="description"/>
-    <meta content="duyphan.developer@gmail.com" name="author"/>
 
     {!! \Assets::renderStylesheets() !!}
 
     @yield('css')
 
-    <link rel="shortcut icon" href="{{ asset('/images/logo/favicon.png') }}"/>
+    <link rel="shortcut icon" href="{{ asset(get_settings('favicon', 'favicon.png')) }}"/>
 
     <script type="text/javascript">
         var BASE_URL = '{{ asset('') }}',
