@@ -4,7 +4,7 @@ use WebEd\Base\Auth\Http\Requests\AuthRequest;
 use WebEd\Base\Auth\Support\Traits\Auth;
 
 use WebEd\Base\Core\Http\Controllers\BaseController;
-use WebEd\Base\Users\Repositories\Contracts\UserContract;
+use WebEd\Base\Users\Repositories\Contracts\UserRepositoryContract;
 
 class AuthController extends BaseController
 {
@@ -49,7 +49,7 @@ class AuthController extends BaseController
      * AuthController constructor.
      * @param \WebEd\Base\Users\Repositories\UserRepository $userRepository
      */
-    public function __construct(UserContract $userRepository)
+    public function __construct(UserRepositoryContract $userRepository)
     {
         $this->middleware('webed.guest-admin', ['except' => ['getLogout']]);
 
