@@ -1,5 +1,6 @@
 <?php namespace WebEd\Base\Auth\Providers;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 use WebEd\Base\Auth\Http\Middleware\AuthenticateAdmin;
@@ -14,8 +15,13 @@ class MiddlewareServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app['router']->middleware('webed.auth-admin', AuthenticateAdmin::class);
-        $this->app['router']->middleware('webed.guest-admin', GuestAdmin::class);
+        /**
+         * @var Router $router
+         */
+        $router = $this->app['router'];
+
+        $router->aliasMiddleware('webed.auth-admin', AuthenticateAdmin::class);
+        $router->aliasMiddleware('webed.guest-admin', GuestAdmin::class);
     }
 
     /**
