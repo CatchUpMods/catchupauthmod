@@ -4,26 +4,33 @@ use \Closure;
 
 class AuthenticateAdmin
 {
-    public function __construct()
-    {
+    const LOGIN_ROUTE_NAME_GET = 'admin::auth.login.get';
 
-    }
+    const LOGIN_ROUTE_NAME_POST = 'admin::auth.login.post';
 
     /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Closure $next
-     * @param  string|null $guard
+     * @param null|string $guard
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (auth($guard)->guest()) {
-            if ($request->ajax() || $request->wantsJson()) {
-                return response('Unauthorized.', 401);
+        $currentRouteName = $request->route()->getName();
+
+        if ($currentRouteName === $this::LOGIN_ROUTE_NAME_GET || $currentRouteName === $this::LOGIN_ROUTE_NAME_POST) {
+            return $next($request);
+        }
+
+        if (is_in_dashboard()) {
+            if (auth($guard)->guest()) {
+                if ($request->ajax() || $request->wantsJson()) {
+                    return response('Unauthorized.', \Constants::UNAUTHORIZED_CODE);
+                }
+                return redirect()->guest(route($this::LOGIN_ROUTE_NAME_GET));
             }
-            return redirect()->guest(route('admin::auth.login.get'));
         }
 
         return $next($request);

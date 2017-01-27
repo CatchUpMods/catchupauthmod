@@ -89,7 +89,7 @@ class AuthController extends BaseController
 
     /**
      * @param AuthRequest $authRequest
-     * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function postLogin(AuthRequest $authRequest)
     {
