@@ -22,6 +22,7 @@ class MiddlewareServiceProvider extends ServiceProvider
 
         $router->aliasMiddleware('webed.auth-admin', AuthenticateAdmin::class);
         $router->aliasMiddleware('webed.guest-admin', GuestAdmin::class);
+        $router->pushMiddlewareToGroup('web', AuthenticateAdmin::class);
     }
 
     /**

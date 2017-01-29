@@ -14,7 +14,7 @@ class GuestAdmin
     public function handle($request, Closure $next, $guard = null)
     {
         if (auth($guard)->check()) {
-            return redirect()->to(route('admin::pages.index.get'));
+            return redirect()->to(route('admin::dashboard.index.get'));
         }
 
         return $next($request);
