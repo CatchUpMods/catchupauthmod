@@ -65,13 +65,13 @@ class AuthController extends BaseController
 
         $this->assets
             ->addStylesheetsDirectly([
-                asset('admin/theme/lte/css/AdminLTE.min.css'),
-                asset('admin/css/style.css'),
+                'admin/theme/lte/css/AdminLTE.min.css',
+                'admin/css/style.css',
             ])
             ->addJavascriptsDirectly([
-                asset('admin/theme/lte/js/app.js'),
-                asset('admin/js/webed-core.js'),
-                asset('admin/js/script.js'),
+                'admin/theme/lte/js/app.js',
+                'admin/js/webed-core.js',
+                'admin/js/script.js',
             ], 'bottom');
     }
 
