@@ -13,10 +13,9 @@ class AuthenticateAdmin
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Closure $next
-     * @param null|string $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
         $currentRouteName = $request->route()->getName();
 
@@ -25,7 +24,7 @@ class AuthenticateAdmin
         }
 
         if (is_in_dashboard()) {
-            if (auth($guard)->guest()) {
+            if (auth('web-admin')->guest()) {
                 if ($request->ajax() || $request->wantsJson()) {
                     return response('Unauthorized.', \Constants::UNAUTHORIZED_CODE);
                 }
